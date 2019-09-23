@@ -110,10 +110,18 @@ http://ricostacruz.com/cheatsheets/umdjs.html
       return a / b;
     },
     "min": function() {
-      return Math.min.apply(this, arguments);
+      if (arguments.length === 1 && arguments[0].indexOf !== undefined) {
+        return Math.min.apply(this, arguments[0]);
+      } else {
+        return Math.min.apply(this, arguments);
+      }
     },
     "max": function() {
-      return Math.max.apply(this, arguments);
+      if (arguments.length === 1 && arguments[0].indexOf !== undefined) {
+        return Math.max.apply(this, arguments[0]);
+      } else {
+        return Math.max.apply(this, arguments);
+      }
     },
     "merge": function() {
       return Array.prototype.reduce.call(arguments, function(a, b) {
